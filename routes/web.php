@@ -35,6 +35,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/contacts/{contact_id}', [ContactController::class, 'destroy'])->name('contacts.destroy');
 
     Route::get('/receive-sms', [TextBeeController::class, 'receiveSMS'])->name('sms.receive');
+    Route::get('/send-sms', [TextBeeController::class, 'sendSMS_index'])->name('sms.send.index');
+    Route::post('/send-sms', [TextBeeController::class, 'sendSMS'])->name('sms.send');
 });
 
 require __DIR__.'/auth.php';

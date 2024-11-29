@@ -69,7 +69,6 @@
                         <x-pagination-show-records 
                             :value="$data['record_per_page']"
                             :searchValue="$data['search']"
-                            routeTo="contacts.index"
                         />
                     </form>
                     {{ $data["contacts"]->links() }}

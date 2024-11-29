@@ -7,6 +7,8 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\User;
+use App\Models\Contact;
 
 class TextBeeController extends Controller
 {
@@ -69,5 +71,32 @@ class TextBeeController extends Controller
 
         // return $paginator;
         return view('sms.receive', compact("combined_data"));
+    }
+
+
+    public function sendSMS_index(Request $request)
+    {
+        $user = $request->user();
+        $data = Contact::where('user_id', $user->id)->get();
+        return view('sms.send', compact("data"));
+    }
+
+    public function sendSMS(Request $request)
+    {
+        $request->validateWithBag('sendingSMS', [
+            'sms_message' => ['required'],
+            'selectedRecipients' => ['required'],
+        ]);
+
+        $recipientsArray = explode(",", $request->selectedRecipients);
+        
+        $recipientNumbersArray = [];
+        for($a = 0 ; $a < count($recipientsArray); $a++)
+        {
+            $data = Contact::find($recipientsArray[$a]);
+            $recipientNumbersArray[$a] = $data->number;
+        }
+        $recipientNumbersString = implode(",", $recipientNumbersArray);
+        return $recipientNumbersString;
     }
 }

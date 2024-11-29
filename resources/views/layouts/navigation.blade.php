@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('sms.receive')" :active="request()->routeIs('sms.receive')">
                         {{ __('Receive SMS') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('sms.send.index')" :active="request()->routeIs('sms.send.index')">
+                        {{ __('Send SMS') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -81,6 +84,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('sms.receive')" :active="request()->routeIs('sms.receive')">
                 {{ __('Receive SMS') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('sms.send.index')" :active="request()->routeIs('sms.send.index')">
+                {{ __('Send SMS') }}
             </x-responsive-nav-link>
         </div>
 

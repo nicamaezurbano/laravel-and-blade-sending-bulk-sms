@@ -33,7 +33,6 @@
                     <form x-data="" action="{{ route('sms.receive') }}" method="get" id="form_showRecords">
                         <x-pagination-show-records 
                             :value="$combined_data['record_per_page']"
-                            routeTo="sms.receive"
                         />
                     </form>
                         
