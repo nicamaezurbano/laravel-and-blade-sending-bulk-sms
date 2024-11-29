@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\TextBeeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/contacts/{contact_id}', [ContactController::class, 'update'])->name('contacts.update');
     Route::delete('/contacts/{contact_id}', [ContactController::class, 'destroy'])->name('contacts.destroy');
 
-    Route::get('/receive-sms', [ContactController::class, 'receiveSMS'])->name('sms.receive');
+    Route::get('/receive-sms', [TextBeeController::class, 'receiveSMS'])->name('sms.receive');
 });
 
 require __DIR__.'/auth.php';
