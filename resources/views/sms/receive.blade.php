@@ -22,7 +22,7 @@
                             <tr>
                                 <td>{{ $sms["sender"] }}</td>
                                 <td>{{ $sms["message"] }}</td>
-                                <td>{{ date_format(date_create($sms["receivedAt"]), "F m, Y | g:i A") }}</td>
+                                <td>{{ date_format(date_create($sms["receivedAt"]), "F d, Y | g:i A") }}</td>
                             </tr>
                         @endforeach
                         </tbody>

@@ -89,6 +89,45 @@
             </div>
         </div>
     </form>
+
+    @if(session('response'))
+        <x-modal name="sms_response" :show="true">
+            <div class="p-6">
+                <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                    {{ __('SMS Sending Status') }}
+                </h2>
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Contact Number</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for($a=0; $a < count(session('response')); $a++)
+                            <tr>
+                                <td>
+                                    {{ session('recipients')[$a] }}
+                                </td>
+                                <td>
+                                    @if(session('response')[$a]['success'])
+                                        Sent Successful
+                                    @else
+                                        Sent Failed
+                                    @endif
+                                </td>
+                            </tr>
+                        @endfor
+                    </tbody>
+                </table>
+                <div class="mt-6 flex justify-end">
+                    <x-secondary-button x-on:click="$dispatch('close')">
+                        {{ __('Close') }}
+                    </x-secondary-button>
+                </div>
+            </div>
+        </x-modal>
+    @endif
 </x-app-layout>
 
 <script>
