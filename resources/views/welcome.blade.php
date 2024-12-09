@@ -6,6 +6,9 @@
 
         <title>Laravel</title>
 
+        <!-- ICON -->
+        <link rel="shortcut icon" href="{{ Vite::asset('resources/images/logo.png') }}" type="image/x-icon">
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
@@ -23,7 +26,7 @@
             @if (Route::has('login'))
                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
+                        <a href="{{ url('/contacts') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>
                     @else
                         <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
 
@@ -34,8 +37,20 @@
                 </div>
             @endif
 
-            <div class="max-w-7xl mx-auto p-6 lg:p-8">
-                <h1>Text Blast</h1>
+            <div class="max-w-7xl mx-auto p-6 lg:p-8 flex flex-col justify-center items-center">
+                <x-application-logo class="w-40 h-40" />
+                <div class="md:w-3/4 lg:w-1/2">
+                    <h1 class="text-3xl mb-5 text-center">
+                        A web-based application that features bulk SMS sending to a selected contact.
+                    </h1>
+
+                    <p class="text-xl font-medium mb-1">Features:</p>
+                    <ul class="list-disc list-inside">
+                        <li>Built using Laravel framework.</li>
+                        <li>CRUD functionality for the contacts.</li>
+                        <li>Utilize TextBee, an open-source Android-based SMS gateway, to send SMS to multiple numbers via API.</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </body>
